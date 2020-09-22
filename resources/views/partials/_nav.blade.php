@@ -13,7 +13,7 @@
      </div>
      <div class="collapse navbar-collapse " id="navbarNavDropdown">
        <ul class="navbar-nav ml-md-auto ">
-         <li class="nav-item dropdown">
+         <li class="nav-item dropleft">
            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             My Account
            </a>
