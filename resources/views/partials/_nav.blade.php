@@ -6,9 +6,9 @@
 
      <div class="collapse navbar-collapse" id="navbarNavDropdown">
        <ul class="navbar-nav">
-         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-         <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-         <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+         <li class="nav-item {{Request::is('/')?"active":""}}"><a class="nav-link" href="/">Home</a></li>
+         <li class="nav-item {{Request::is('contact')?"active":""}}"><a class="nav-link" href="/contact">Contact</a></li>
+         <li class="nav-item {{Request::is('about')?"active":""}}"><a class="nav-link" href="/about">About</a></li>
        </ul>
      </div>
      <div class="collapse navbar-collapse " id="navbarNavDropdown">
