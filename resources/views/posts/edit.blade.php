@@ -3,17 +3,16 @@
 @section('title','|Edit Post')
 
 @section('content')
-  <div class="row">
-    {!!Form::model($post,['route'=>['posts.update',$post->id]])!!}
-    <div class="col-md-12">
+    {!!Form::model($post,['route'=>['posts.update',$post->id],'method'=>'PUT'])!!}
+    <dggiv class="form-row">
+    <div class="col">
       {{Form::label('title','Title:')}}
-      {{Form::text('title',null,['class'=>'form-control'])}}
+      {{Form::text('title',null,['class'=>'form-control form-control-lg'])}}
       {{Form::label('body','Body:')}}
       {{Form::textarea('body',null,['class'=>'form-control','rows'=>'15','cols'=>'60'])}}
-      {!!Form::close()!!}
     </div>
 
-    <div class="col-md-4 col-md-offset-2 ">
+    <div class="col">
       <div class="well">
         <dl class="dl-horizontal">
           <dt>Created at:</dt>
@@ -36,7 +35,7 @@
         </div>
       </div>
     </div>
+    {!!Form::close()!!}
   </div>
-
 
 @endsection()
