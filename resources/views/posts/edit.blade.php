@@ -4,7 +4,7 @@
 
 @section('content')
     {!!Form::model($post,['route'=>['posts.update',$post->id],'method'=>'PUT'])!!}
-    <dggiv class="form-row">
+    <div class="form-row">
     <div class="col">
       {{Form::label('title','Title:')}}
       {{Form::text('title',null,['class'=>'form-control form-control-lg'])}}
