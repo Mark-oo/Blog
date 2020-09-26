@@ -8,12 +8,18 @@
     <div class="col">
       {{Form::label('title','Title:')}}
       {{Form::text('title',null,['class'=>'form-control form-control-lg'])}}
+      {{Form::label('slug','Slug:')}}
+      {{Form::text('slug',null,['class'=>'form-control form-control-lg'])}}
       {{Form::label('body','Body:')}}
       {{Form::textarea('body',null,['class'=>'form-control','rows'=>'15','cols'=>'60'])}}
     </div>
 
     <div class="col">
       <div class="well">
+        <dl class="dl-horizontal">
+          <dt>Url slug:</dt>
+          <dd><a href="{{url($post->slug)}}">{{url($post->slug)}}</a></dd>
+        </dl>
         <dl class="dl-horizontal">
           <dt>Created at:</dt>
           <dd>{{date('D, d M Y H:i',strtotime($post->created_at))}}</dd>
