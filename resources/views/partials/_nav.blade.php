@@ -13,19 +13,23 @@
        </ul>
      </div>
      <div class="collapse navbar-collapse " id="navbarNavDropdown">
+       @if(Auth::check())
        <ul class="navbar-nav ml-md-auto ">
          <li class="nav-item dropleft">
            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            My Account
+            Vozdra, {{Auth::user()->name}}
            </a>
            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-             <li><a class="dropdown-item" href="#">Action</a></li>
-             <li><a class="dropdown-item" href="#">Another Action</a></li>
-             <li><a class="dropdown-item" href="#">And Another Action</a></li>
+             <li><a class="dropdown-item" href="/posts">Posts</a></li>
              <li class="dropdown-divider"></li>
-             <li><a class="dropdown-item" href="#">Separated Action</a></li>
+             <li><a class="dropdown-item" href="/logout">Logout</a></li>
            </ul>
          </li>
        </ul>
+     @else
+      <ul class="navbar-nav  ml-md-auto">
+       <li class="nav-item"><a class="btn btn-outline-primary" href="/login">Login</a></li>
+      </ul>
+     @endif
      </div>
 </nav>

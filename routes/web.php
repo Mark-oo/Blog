@@ -15,6 +15,17 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware'=>['web']],function(){
+
+  // register
+  Route::post('/auth/register','Auth\RegisterController@register');
+  Route::get('/auth/register','Auth\RegisterController@showRegistrationForm');
+  // authentication routes
+  Auth::routes();
+  Route::get('/logout','Auth\LoginController@logout');
+  Route::post('/login','Auth\LoginController@login');
+  Route::get('/login','Auth\LoginController@showLoginForm');
+
+
   Route::get('blog/{slug}',['as'=>'blog.single','uses'=>'BlogController@getSingle'])
        ->where('slug','[\w\d\-\_]+');
   Route::get('blog',['uses'=>'BlogController@getIndex','as'=>'blog.index']);
@@ -23,7 +34,3 @@ Route::group(['middleware'=>['web']],function(){
   Route::get('/','PagesController@getIndex');
   Route::resource('posts','PostController');
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
