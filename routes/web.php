@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware'=>['web']],function(){
+  // password reset
+  // Route::post('password/reset','Auth\ResetPasswordController@reset');
+  // Route::post('/password/email','Auth\ForgotPasswordController@sendResetLinkEmail');
+  // Route::get('/password/reset/{token?}','Auth\ForgotPasswordController@showLinkRequestForm');
 
   // register
   Route::post('/auth/register','Auth\RegisterController@register');

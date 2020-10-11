@@ -26,10 +26,11 @@
            </ul>
          </li>
        </ul>
-     @else
+     @elseif(Request::is('login'))
+     @else()
       <ul class="navbar-nav  ml-md-auto">
        <li class="nav-item"><a class="btn btn-outline-primary" href="/login">Login</a></li>
       </ul>
-     @endif
      </div>
+   @endif()
 </nav>

@@ -1,5 +1,5 @@
 @extends('main')
-@section('title','| Regiter')
+@section('title','| Register')
 @section('content')
 {!!Form::open()!!}
 {{Form::label('name',"Name")}}
