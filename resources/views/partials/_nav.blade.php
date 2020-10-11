@@ -21,6 +21,7 @@
            </a>
            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
              <li><a class="dropdown-item" href="/posts">Posts</a></li>
+             <li><a class="dropdown-item" href="{{route('categories.index')}}">Category</a></li>
              <li class="dropdown-divider"></li>
              <li><a class="dropdown-item" href="/logout">Logout</a></li>
            </ul>

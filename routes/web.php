@@ -15,20 +15,22 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware'=>['web']],function(){
+
   // password reset
   // Route::post('password/reset','Auth\ResetPasswordController@reset');
   // Route::post('/password/email','Auth\ForgotPasswordController@sendResetLinkEmail');
   // Route::get('/password/reset/{token?}','Auth\ForgotPasswordController@showLinkRequestForm');
 
   // register
-  Route::post('/auth/register','Auth\RegisterController@register');
-  Route::get('/auth/register','Auth\RegisterController@showRegistrationForm');
+  // Route::post('/auth/register','Auth\RegisterController@register');
+  // Route::get('/auth/register','Auth\RegisterController@showRegistrationForm');
   // authentication routes
   Auth::routes();
   Route::get('/logout','Auth\LoginController@logout');
   Route::post('/login','Auth\LoginController@login');
   Route::get('/login','Auth\LoginController@showLoginForm');
 
+  Route::resource('categories','CategoryController',['except'=>['create']]);#exept izbacuje iz routova da user ne bi mogo da zajebav
 
   Route::get('blog/{slug}',['as'=>'blog.single','uses'=>'BlogController@getSingle'])
        ->where('slug','[\w\d\-\_]+');
