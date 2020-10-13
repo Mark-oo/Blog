@@ -15,6 +15,10 @@
           <dd><a href="{{url('blog/'.$post->slug)}}">{{url('blog/'.$post->slug)}}</a></dd>
         </dl>
         <dl class="dl-horizontal">
+          <dt>Category:</dt>
+          <dd>{{isset($post->category->name)?$post->category->name:"No category selected"}}</dd>
+        </dl>
+        <dl class="dl-horizontal">
           <dt>Created at:</dt>
           <dd>{{date('D, d M Y H:i',strtotime($post->created_at))}}</dd>
         </dl>

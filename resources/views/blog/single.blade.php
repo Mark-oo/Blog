@@ -8,7 +8,11 @@
      <h1>{{$post->title}}</h1>
      <p>{{$post->body}}</p>
      <hr>
-     <p>Posted in:{{$post->category->name}}</p>
+     @if($post->category_id==0)
+     <p>No category associated</p>
+     @else
+       <p>Posted in:{{$post->category->name}}</p>
+     @endif
    </div>
  </div>
 
