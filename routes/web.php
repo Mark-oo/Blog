@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware'=>['web']],function(){
+  // tags
+  Route::resource('tag','TagController',['except'=>['create']]);
 
   // password reset
   // Route::post('password/reset','Auth\ResetPasswordController@reset');
@@ -25,13 +27,15 @@ Route::group(['middleware'=>['web']],function(){
   // Route::post('/auth/register','Auth\RegisterController@register');
   // Route::get('/auth/register','Auth\RegisterController@showRegistrationForm');
   // authentication routes
+
+  // login
   Auth::routes();
   Route::get('/logout','Auth\LoginController@logout');
   Route::post('/login','Auth\LoginController@login');
   Route::get('/login','Auth\LoginController@showLoginForm');
-
+  // categories
   Route::resource('categories','CategoryController',['except'=>['create']]);#exept izbacuje iz routova da user ne bi mogo da zajebav
-
+  // app routes
   Route::get('blog/{slug}',['as'=>'blog.single','uses'=>'BlogController@getSingle'])
        ->where('slug','[\w\d\-\_]+');
   Route::get('blog',['uses'=>'BlogController@getIndex','as'=>'blog.index']);

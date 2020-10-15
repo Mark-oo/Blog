@@ -12,7 +12,8 @@
       {{Form::text('slug',null,['class'=>'form-control form-control-lg'])}}
 
       {{Form::label('category_id','Category:')}}
-      {{Form::select('category_id',$categories,null,['class'=>'form-control'])}}
+      {{Form::select('category_id',$categories,$post->catrgory_id,['class'=>'form-control','placeholder'=>'No category selected'])}}
+
 
       {{Form::label('body','Body:')}}
       {{Form::textarea('body',null,['class'=>'form-control','rows'=>'15','cols'=>'60'])}}
