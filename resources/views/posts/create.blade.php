@@ -5,6 +5,7 @@
 @section('stylesheets')
 
   {!! Html::style('css/parsley.css') !!}
+  {!! Html::style('css/select2.min.css') !!}
 
 @endsection
 
@@ -20,12 +21,19 @@
         {{Form::label('slug','Slug:')}}
         {{Form::text('slug',null,['class'=>'form-control','required'=>'','minlenght'=>'5','maxlenght'=>'255'])}}
 
-        {{Form::label('category_id','Category')}}
+        {{Form::label('category_id','Category:')}}
         <select class="form-control" name="category_id">
           <option value="0" selected>No category selected</option>
           @foreach($categories as $category)
           <option value="{{$category->id}}">{{$category->name}}</option>
           @endforeach
+        </select>
+
+        {{Form::label('tags','Tags:')}}
+        <select class="form-control js-example-basic-multiple" name="tags[]" multiple="multiple">
+          @foreach($tags as $tag)
+            <option value="{{$tag->id}}">{{$tag->name}}</option>
+          @endforeach()
         </select>
 
         {{Form::label('body',"Post Body:")}}
@@ -42,4 +50,8 @@
 
 @section('scripts')
   {!! Html::script('js/parsley.min.js') !!}
+  {!! Html::script('js/select2.min.js') !!}
+  <script type="text/javascript">
+     $('.js-example-basic-multiple').select2();
+  </script>
 @endsection

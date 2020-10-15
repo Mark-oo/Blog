@@ -1,6 +1,12 @@
 @extends('main')
 
 @section('title','|Edit Post')
+@section('stylesheets')
+
+  {!! Html::style('css/parsley.css') !!}
+  {!! Html::style('css/select2.min.css') !!}
+
+@endsection
 
 @section('content')
     {!!Form::model($post,['route'=>['posts.update',$post->id],'method'=>'PUT'])!!}
@@ -13,6 +19,9 @@
 
       {{Form::label('category_id','Category:')}}
       {{Form::select('category_id',$categories,$post->catrgory_id,['class'=>'form-control','placeholder'=>'No category selected'])}}
+
+      {{Form::label('tags','Tags:')}}
+      {{Form::select('tags[]',$tags,null,['class'=>'form-control js-example-basic-multiple','multiple'=>'multiple','placeholder'=>'No tags selected'])}}
 
 
       {{Form::label('body','Body:')}}
@@ -50,3 +59,10 @@
   </div>
 
 @endsection()
+@section('scripts')
+  {!! Html::script('js/parsley.min.js') !!}
+  {!! Html::script('js/select2.min.js') !!}
+  <script type="text/javascript">
+     $('.js-example-basic-multiple').select2();
+  </script>
+@endsection
