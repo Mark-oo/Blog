@@ -9,7 +9,7 @@
   @if(session('status'))
     <div class="alert alert-primary" role="alert">
   {{session('status')}}
-</div>
+  </div>
   @endif
   {{Form::label('email',"Email")}}
   {{Form::email('email',null,['class'=>'form-control'])}}
