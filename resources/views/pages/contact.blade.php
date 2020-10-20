@@ -9,7 +9,8 @@
         <div class="col-md-12">
           <h1>Contact Us</h1>
           <hr>
-          <form class="" action="index.html" method="post">
+          <form class="" action="{{url('contact')}}" method="POST">
+            {{csrf_field()}}
             <div class="form-group">
               <label for="email">Email:</label>
               <input type="email" name="email" class="form-control" id="email">
@@ -22,8 +23,9 @@
               <label for="message">Message:</label>
               <textarea name="message" id="message" class="form-control" rows="8" cols="80">Write to us here...</textarea>
             </div>
+            <button type="submit" class="btn btn-primary">Send Message</button>
           </form>
-          <button type="submit" class="btn btn-primary">Send Message</button>
+        
         </div>
 
       </div>
