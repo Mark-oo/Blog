@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware'=>['web']],function(){
+
+  // comments
+  Route::post('comments/{post_id}',['uses'=>'CommentsController@store','as'=>'comments.store']);
   // tags
   Route::resource('tag','TagController',['except'=>['create']]);
 
