@@ -27,8 +27,12 @@
             <tr>
               <th>{{$post->id}}</th>
               <td>{{substr($post->title,0,30)}}{{strlen($post->title)>20?'...':''}}</td>
-              <td>{{substr($post->body,0,20)}}{{strlen($post->body)>20?'...':''}}</td>
-              <td>{{substr($post->category->name,0,20)}}{{strlen($post->category->name)>20?'...':''}}</td>
+              <td>{{substr(strip_tags($post->body),0,20)}}{{strlen(strip_tags($post->body))>20?'...':''}}</td>
+              @if(!empty($post->category))
+                <td>{{substr($post->category->name,0,20)}}{{strlen($post->category->name)>20?'...':''}}</td>
+              @else
+                <td>No category selected</td>
+              @endif()
               <td>{{date('D, d M Y H:i',strtotime($post->created_at))}}</td>
               <td><a href="{{route('posts.show',$post->id)}}" class="btn btn-default">View</a><a href="{{route('posts.edit',$post->id)}}" class="btn btn-default">Edit</a></td>
             </tr>

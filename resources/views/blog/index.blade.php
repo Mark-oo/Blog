@@ -12,7 +12,7 @@
       <div class="col-md-8 col-md-offset-2">
         <h2>{{$p->title}}</h2>
         <h5>Published: {{date('D, d M Y H:i',strtotime($p->created_at))}}</h5>
-        <p>{{substr($p->body,0,120)}}{{strlen($p->body)>120?'...':''}}</p>
+        <p>{{substr(strip_tags($p->body),0,120)}}{{strlen(strip_tags($p->body))>120?'...':''}}</p>
         <a href="{{route('blog.single',$p->slug)}}" class="btn btn-primary">Read more</a>
       </div>
     </div>

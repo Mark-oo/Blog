@@ -17,7 +17,7 @@
         </span>{{$post->comments->count()}} Comments
       </div>
       <br>
-      <p class="lead">{{$post->body}}</p>
+      <p class="lead">{!!$post->body!!}</p>
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
          @foreach ($post->comments as $comment)

@@ -6,7 +6,7 @@
  <div class="row">
    <div class="col-md-8 col-md-offset-2">
      <h1>{{$post->title}}</h1>
-     <p>{{$post->body}}</p>
+     <p>{!!$post->body!!}</p>
      <hr>
      @if($post->category_id==0)
      <p>No category associated</p>
