@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Comment;
 use App\Post;
+use App\User;
 use Session;
 
 class CommentsController extends Controller
@@ -40,12 +41,15 @@ class CommentsController extends Controller
         $this->validate($request,[
           'comment'=>'required|max:300',
         ]);
-        $comment=new Commnet;
-        $post=Post::find($post_id);
 
-        $commnet->commnet=$request->commnet;
+        $post=Post::find($post_id);
+        $comment=new Comment;
+
+        $comment->user_id = auth()->user()->id;#SAUCE:memesgarden
+
+        $comment->comment=$request->comment;
         $comment->approved=true;
-        $comment->post()->(associate($post);
+        $comment->post()->associate($post);
 
         $comment->save();
 
