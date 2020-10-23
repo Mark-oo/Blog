@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware'=>['web']],function(){
 
   // comments
+  Route::get('comments/{id}/delete',['uses'=>'CommentsController@delete','as'=>'comments.delete']);
+  Route::delete('comments/{id}',['uses'=>'CommentsController@destroy','as'=>'comments.destroy']);
+  Route::put('comments/{id}',['uses'=>'CommentsController@update','as'=>'comments.update']);
+  Route::get('comments/{id}/edit',['uses'=>'CommentsController@edit','as'=>'comments.edit']);
   Route::post('comments/{post_id}',['uses'=>'CommentsController@store','as'=>'comments.store']);
   // tags
   Route::resource('tag','TagController',['except'=>['create']]);

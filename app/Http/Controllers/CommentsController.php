@@ -10,25 +10,10 @@ use Session;
 
 class CommentsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+   public function __construct(){
+     $this->middleware('auth',['except'=>'store']);
+   }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -59,16 +44,6 @@ class CommentsController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -78,7 +53,8 @@ class CommentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $comment=Comment::find($id);
+        return view('comments.edit')->with('comment',$comment);
     }
 
     /**
@@ -90,7 +66,21 @@ class CommentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $comment=Comment::find($id);
+
+      $this->validate($request,['comment'=>'required|max:255']);
+
+      $comment->comment=$request->comment;
+      $comment->save();
+
+      Session::flash('success','Comment Edited');
+
+      return redirect()->route('posts.show',$comment->post->id);
+    }
+
+    public function delete($id){
+      $comment=Comment::find($id);
+      return view('comments.delete')->with('comment',$comment);
     }
 
     /**
@@ -101,6 +91,10 @@ class CommentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $comment=Comment::find($id);
+        $post_id=$comment->post_id;
+        $comment->delete();
+        Session::flash('success','Comment deleted');
+        return redirect()->route('posts.show',$post_id);
     }
 }
