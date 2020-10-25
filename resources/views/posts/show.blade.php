@@ -7,6 +7,7 @@
     <div class="col-md-8">
       <h1>{{$post->title}}</h1>
       <hr>
+      <img src="{{asset('images/'.$post->image)}}" /alt="">
       <div>
       @foreach ($post->tags as $tag)
         <span class="badge badge-secondary">{{$tag->name}}</span>

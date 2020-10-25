@@ -21,7 +21,7 @@
 @endsection
 
 @section('content')
-    {!!Form::model($post,['route'=>['posts.update',$post->id],'method'=>'PUT'])!!}
+    {!!Form::model($post,['route'=>['posts.update',$post->id],'method'=>'PUT','files'=>true])!!}
     <div class="form-row">
     <div class="col">
       {{Form::label('title','Title:')}}
@@ -35,6 +35,8 @@
       {{Form::label('tags','Tags:')}}
       {{Form::select('tags[]',$tags,null,['class'=>'form-control js-example-basic-multiple','multiple'=>'multiple','placeholder'=>'No tags selected'])}}
 
+      {{Form::label('featured_image','Update image')}}
+      {{Form::file('featured_image',['class'=>'form-control'])}}
 
       {{Form::label('body','Body:')}}
       {{Form::textarea('body',null,['class'=>'form-control','rows'=>'15','cols'=>'60'])}}

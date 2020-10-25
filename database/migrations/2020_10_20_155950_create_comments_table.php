@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('email');
             $table->text('comment');
             $table->boolean('approved');
+            $table->integer('post_id');
             $table->unsignedBigInteger('post_id');
             $table->timestamps();
 
