@@ -19,8 +19,8 @@ class  PagesController extends Controller {
    return view('/pages/welcome')->with('posts',$posts);
   }
   public function getAbout(){
-    $first="marko";
-    $last="knezevic";
+      $first="marko";
+      $last="knezevic";
 
     $fullname=$first." ".$last;
     $email="marko@marko.marko";
